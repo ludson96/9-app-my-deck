@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fase_9/features/quiz/views/quiz/quiz.store.dart';
 import 'package:fase_9/shared/models/deck.model.dart';
 import 'package:fase_9/shared/models/question.model.dart';

@@ -49,7 +49,7 @@ class CustomInput extends StatelessWidget {
 
     return IconButton(
       onPressed:
-          _onPressedSufixIcon != null ? () => _onPressedSufixIcon!() : null,
+          _onPressedSufixIcon != null ? () => _onPressedSufixIcon() : null,
       icon: Icon(
         !_obscureText ? Icons.visibility : Icons.visibility_off,
       ),

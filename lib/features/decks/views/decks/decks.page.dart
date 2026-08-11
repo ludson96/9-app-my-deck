@@ -21,7 +21,7 @@ class DecksPage extends StatefulWidget {
 class _DecksPageState extends State<DecksPage> {
   final _store = DecksStore();
 
-  Future<void> _navigateToNewDeck(BuildContext context) async {
+  Future<void> _navigateToNewDeck() async {
     final deckTitle = await Navigator.of(context).push<String>(
       MaterialPageRoute(
         builder: (_) => const NewDeckPage(),
@@ -65,7 +65,7 @@ class _DecksPageState extends State<DecksPage> {
               final sharedPrefs = await SharedPreferences.getInstance();
               await sharedPrefs.clear();
               Constants.userToken = '';
-              if (!mounted) return;
+              if (!context.mounted) return;
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (_) => const LoginPage()),
               );
@@ -85,12 +85,12 @@ class _DecksPageState extends State<DecksPage> {
           }
 
           return _store.decks.isEmpty
-              ? EmptyDecks(addDeck: () => _navigateToNewDeck(context))
+              ? EmptyDecks(addDeck: () => _navigateToNewDeck())
               : DeckList(store: _store);
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => _navigateToNewDeck(context),
+        onPressed: () => _navigateToNewDeck(),
         label: const Text("Adicionar"),
         backgroundColor: Colors.black,
       ),

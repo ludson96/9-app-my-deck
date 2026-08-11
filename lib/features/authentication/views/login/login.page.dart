@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (_) => DecksPage(),
+        builder: (_) => const DecksPage(),
       ),
     );
   }

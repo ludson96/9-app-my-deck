@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 const primaryColor = Colors.black;
 
 MaterialColor getMaterialColor(Color color) {
-  final red = color.red;
-  final green = color.green;
-  final blue = color.blue;
+  final red = (color.r * 255.0).round().clamp(0, 255);
+  final green = (color.g * 255.0).round().clamp(0, 255);
+  final blue = (color.b * 255.0).round().clamp(0, 255);
 
   var swatch = {
     50: Color.fromRGBO(red, green, blue, .1),
@@ -20,5 +20,5 @@ MaterialColor getMaterialColor(Color color) {
     1000: Color.fromRGBO(red, green, blue, 1),
   };
 
-  return MaterialColor(color.value, swatch);
+  return MaterialColor(color.toARGB32(), swatch);
 }

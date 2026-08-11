@@ -19,7 +19,6 @@ class DeckList extends StatefulWidget {
 
 class _DeckListState extends State<DeckList> {
   Future<void> _navigateToDeckDetail({
-    required BuildContext context,
     required Deck deck,
   }) async {
     await Navigator.of(context).push(
@@ -45,7 +44,6 @@ class _DeckListState extends State<DeckList> {
         final deck = widget._store.decks[index];
         return InkWell(
           onTap: () => _navigateToDeckDetail(
-            context: context,
             deck: deck,
           ),
           onLongPress: () => removeDeck(deck),

@@ -25,7 +25,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (_) {
-            return isAuthenticated ? DecksPage() : const LoginPage();
+            return isAuthenticated ? const DecksPage() : const LoginPage();
           },
         ),
       );
