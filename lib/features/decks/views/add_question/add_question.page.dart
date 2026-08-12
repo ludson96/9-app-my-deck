@@ -60,21 +60,14 @@ class _AddQuestionPageState extends State<AddQuestionPage> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            CustomInput(
-              controller: _askController,
-              label: "Pergunta",
-            ),
-            const SizedBox(
-              height: 50,
-            ),
+            CustomInput(controller: _askController, label: "Pergunta"),
+            const SizedBox(height: 50),
             CustomInput(
               controller: _answerController,
               label: "Resposta",
               maxLines: 3,
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
             SizedBox(
               height: 50,
               width: 150,
@@ -83,17 +76,16 @@ class _AddQuestionPageState extends State<AddQuestionPage> {
                   return ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
+                      foregroundColor: Colors.white,
                     ),
                     onPressed: _store.isLoading ? null : _addQuestion,
                     child: _store.isLoading
-                        ? const CircularProgressIndicator(
-                            color: Colors.black,
-                          )
+                        ? const CircularProgressIndicator(color: Colors.black)
                         : const Text("Adicionar"),
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),

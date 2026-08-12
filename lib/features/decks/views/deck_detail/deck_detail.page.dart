@@ -9,10 +9,7 @@ import 'widgets/start_quiz_button.widget.dart';
 class DeckDetailPage extends StatelessWidget {
   final _store = DeckDetailStore();
 
-  DeckDetailPage({
-    super.key,
-    required Deck deck,
-  }) {
+  DeckDetailPage({super.key, required Deck deck}) {
     _store.init(deck);
   }
 
@@ -21,6 +18,7 @@ class DeckDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
         title: Text(_store.deck!.name),
       ),
       body: Center(
@@ -38,19 +36,15 @@ class DeckDetailPage extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
                   Observer(
                     builder: (context) {
                       return Text(
                         "${_store.deck!.questions.length} ${_store.deck!.questions.length == 1 ? 'cartão' : 'cartões'}",
-                        style: const TextStyle(
-                          fontSize: 24,
-                        ),
+                        style: const TextStyle(fontSize: 24),
                       );
                     },
-                  )
+                  ),
                 ],
               ),
             ),
@@ -60,7 +54,7 @@ class DeckDetailPage extends StatelessWidget {
                 children: [
                   AddQuestionButton(store: _store),
                   const SizedBox(height: 20),
-                  StartQuizButton(store: _store)
+                  StartQuizButton(store: _store),
                 ],
               ),
             ),

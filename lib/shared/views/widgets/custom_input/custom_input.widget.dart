@@ -7,6 +7,7 @@ class CustomInput extends StatelessWidget {
   final bool _isPassword;
   final bool _obscureText;
   final Function? _onPressedSufixIcon;
+  final Widget? _prefixIcon;
 
   const CustomInput({
     super.key,
@@ -16,26 +17,44 @@ class CustomInput extends StatelessWidget {
     bool isPassword = false,
     bool obscureText = false,
     Function? onPressedSufixIcon,
+    Widget? prefixIcon,
   })  : _controller = controller,
         _label = label,
         _maxLines = maxLines,
         _isPassword = isPassword,
         _obscureText = obscureText,
-        _onPressedSufixIcon = onPressedSufixIcon;
+        _onPressedSufixIcon = onPressedSufixIcon,
+        _prefixIcon = prefixIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(),
+        filled: true,
+        fillColor: Colors.grey.shade50,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey.shade300),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey.shade300),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Colors.black, width: 2),
+        ),
         labelText: _label,
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
+          color: Colors.grey.shade700,
+        ),
+        floatingLabelStyle: const TextStyle(
           color: Colors.black,
+          fontWeight: FontWeight.bold,
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black),
-        ),
+        prefixIcon: _prefixIcon,
         suffixIcon: buildSufixIcon(),
       ),
       cursorColor: Colors.black,
@@ -51,7 +70,8 @@ class CustomInput extends StatelessWidget {
       onPressed:
           _onPressedSufixIcon != null ? () => _onPressedSufixIcon() : null,
       icon: Icon(
-        !_obscureText ? Icons.visibility : Icons.visibility_off,
+        !_obscureText ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+        color: Colors.grey.shade700,
       ),
     );
   }

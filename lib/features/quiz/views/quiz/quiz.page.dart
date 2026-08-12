@@ -18,6 +18,7 @@ class QuizPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
         title: Text('Quiz: ${deck.name}'),
       ),
       body: Padding(

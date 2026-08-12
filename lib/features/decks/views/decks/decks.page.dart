@@ -22,11 +22,9 @@ class _DecksPageState extends State<DecksPage> {
   final _store = DecksStore();
 
   Future<void> _navigateToNewDeck() async {
-    final deckTitle = await Navigator.of(context).push<String>(
-      MaterialPageRoute(
-        builder: (_) => const NewDeckPage(),
-      ),
-    );
+    final deckTitle = await Navigator.of(
+      context,
+    ).push<String>(MaterialPageRoute(builder: (_) => const NewDeckPage()));
 
     if (deckTitle == null) return;
 
@@ -57,7 +55,7 @@ class _DecksPageState extends State<DecksPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("Decks"),
+        title: const Text("Decks", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
           IconButton(
@@ -70,17 +68,15 @@ class _DecksPageState extends State<DecksPage> {
                 MaterialPageRoute(builder: (_) => const LoginPage()),
               );
             },
-            icon: const Icon(Icons.exit_to_app),
-          )
+            icon: const Icon(Icons.exit_to_app, color: Colors.white),
+          ),
         ],
       ),
       body: Observer(
         builder: (_) {
           if (_store.isLoading) {
             return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.black,
-              ),
+              child: CircularProgressIndicator(color: Colors.black),
             );
           }
 
@@ -93,6 +89,7 @@ class _DecksPageState extends State<DecksPage> {
         onPressed: () => _navigateToNewDeck(),
         label: const Text("Adicionar"),
         backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
       ),
     );
   }

@@ -34,28 +34,22 @@ class _NewDeckPageState extends State<NewDeckPage> {
           children: [
             const Text(
               "Qual é o título do seu novo deck?",
-              style: TextStyle(
-                fontSize: 50,
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
             CustomInput(
               controller: _titleDeckController,
               label: "Título do deck",
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
             SizedBox(
               height: 50,
               width: 150,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
                 ),
                 onPressed: () {
                   if (_titleDeckController.text.isNotEmpty) {
@@ -64,7 +58,7 @@ class _NewDeckPageState extends State<NewDeckPage> {
                 },
                 child: const Text("Adicionar"),
               ),
-            )
+            ),
           ],
         ),
       ),
