@@ -52,7 +52,7 @@ class DeckDetailPage extends StatelessWidget {
               flex: 4,
               child: Column(
                 children: [
-                  AddQuestionButton(store: _store),
+                  ManageCardsButton(store: _store),
                   const SizedBox(height: 20),
                   StartQuizButton(store: _store),
                 ],

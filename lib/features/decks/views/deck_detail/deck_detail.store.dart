@@ -20,6 +20,11 @@ abstract class DeckDetailStoreBase with Store {
   bool isLoading = false;
 
   @action
+  void setDeck(Deck updatedDeck) {
+    deck = updatedDeck;
+  }
+
+  @action
   Future<void> addNewQuestion(Question question) async {
     final tempQuestions = List<Question>.from(deck!.questions);
     tempQuestions.add(question);

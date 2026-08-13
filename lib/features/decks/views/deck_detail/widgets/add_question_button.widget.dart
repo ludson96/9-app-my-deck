@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../shared/models/question.model.dart';
-import '../../add_question/add_question.page.dart';
+import '../../../../../shared/models/deck.model.dart';
+import '../../manage_cards/manage_cards.page.dart';
 import '../deck_detail.store.dart';
 
-class AddQuestionButton extends StatelessWidget {
+class ManageCardsButton extends StatelessWidget {
   final DeckDetailStore _store;
 
-  const AddQuestionButton({
+  const ManageCardsButton({
     Key? key,
     required DeckDetailStore store,
   })  : _store = store,
         super(key: key);
 
-  Future<void> _addQuestion(BuildContext context) async {
-    final question = await Navigator.of(context).push<Question>(
+  Future<void> _openManageCards(BuildContext context) async {
+    final updatedDeck = await Navigator.of(context).push<Deck>(
       MaterialPageRoute(
-        builder: (_) => AddQuestionPage(
-          deckId: _store.deck!.id,
+        builder: (_) => ManageCardsPage(
+          deck: _store.deck!,
         ),
       ),
     );
 
-    if (question != null) {
-      _store.addNewQuestion(question);
+    if (updatedDeck != null) {
+      _store.setDeck(updatedDeck);
     }
   }
 
@@ -39,9 +39,9 @@ class AddQuestionButton extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        onPressed: () => _addQuestion(context),
+        onPressed: () => _openManageCards(context),
         child: const Text(
-          "Add Cartão",
+          "Gerenciar Cards",
           style: TextStyle(
             fontSize: 20,
           ),

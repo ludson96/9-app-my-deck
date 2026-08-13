@@ -9,8 +9,10 @@ part of 'quiz.store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$QuizStore on QuizStoreBase, Store {
-  late final _$currentQuestionAtom =
-      Atom(name: 'QuizStoreBase.currentQuestion', context: context);
+  late final _$currentQuestionAtom = Atom(
+    name: 'QuizStoreBase.currentQuestion',
+    context: context,
+  );
 
   @override
   int get currentQuestion {
@@ -25,8 +27,10 @@ mixin _$QuizStore on QuizStoreBase, Store {
     });
   }
 
-  late final _$showAskAtom =
-      Atom(name: 'QuizStoreBase.showAsk', context: context);
+  late final _$showAskAtom = Atom(
+    name: 'QuizStoreBase.showAsk',
+    context: context,
+  );
 
   @override
   bool get showAsk {
@@ -41,8 +45,10 @@ mixin _$QuizStore on QuizStoreBase, Store {
     });
   }
 
-  late final _$isFinishedAtom =
-      Atom(name: 'QuizStoreBase.isFinished', context: context);
+  late final _$isFinishedAtom = Atom(
+    name: 'QuizStoreBase.isFinished',
+    context: context,
+  );
 
   @override
   bool get isFinished {
@@ -57,13 +63,16 @@ mixin _$QuizStore on QuizStoreBase, Store {
     });
   }
 
-  late final _$QuizStoreBaseActionController =
-      ActionController(name: 'QuizStoreBase', context: context);
+  late final _$QuizStoreBaseActionController = ActionController(
+    name: 'QuizStoreBase',
+    context: context,
+  );
 
   @override
   void alterAskAndAnswer() {
     final _$actionInfo = _$QuizStoreBaseActionController.startAction(
-        name: 'QuizStoreBase.alterAskAndAnswer');
+      name: 'QuizStoreBase.alterAskAndAnswer',
+    );
     try {
       return super.alterAskAndAnswer();
     } finally {
@@ -74,7 +83,8 @@ mixin _$QuizStore on QuizStoreBase, Store {
   @override
   void nextQuestion(bool isCorrect) {
     final _$actionInfo = _$QuizStoreBaseActionController.startAction(
-        name: 'QuizStoreBase.nextQuestion');
+      name: 'QuizStoreBase.nextQuestion',
+    );
     try {
       return super.nextQuestion(isCorrect);
     } finally {

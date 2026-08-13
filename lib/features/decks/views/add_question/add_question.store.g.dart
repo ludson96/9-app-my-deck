@@ -9,8 +9,10 @@ part of 'add_question.store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$AddQuestionStore on AddQuestionStoreBase, Store {
-  late final _$isLoadingAtom =
-      Atom(name: 'AddQuestionStoreBase.isLoading', context: context);
+  late final _$isLoadingAtom = Atom(
+    name: 'AddQuestionStoreBase.isLoading',
+    context: context,
+  );
 
   @override
   bool get isLoading {
@@ -25,14 +27,20 @@ mixin _$AddQuestionStore on AddQuestionStoreBase, Store {
     });
   }
 
-  late final _$addNewQuestionAsyncAction =
-      AsyncAction('AddQuestionStoreBase.addNewQuestion', context: context);
+  late final _$addNewQuestionAsyncAction = AsyncAction(
+    'AddQuestionStoreBase.addNewQuestion',
+    context: context,
+  );
 
   @override
-  Future<Question?> addNewQuestion(
-      {required String ask, required String answer, required int deckId}) {
+  Future<Question?> addNewQuestion({
+    required String ask,
+    required String answer,
+    required int deckId,
+  }) {
     return _$addNewQuestionAsyncAction.run(
-        () => super.addNewQuestion(ask: ask, answer: answer, deckId: deckId));
+      () => super.addNewQuestion(ask: ask, answer: answer, deckId: deckId),
+    );
   }
 
   @override

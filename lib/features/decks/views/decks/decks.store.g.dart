@@ -24,8 +24,10 @@ mixin _$DecksStore on DecksStoreBase, Store {
     });
   }
 
-  late final _$isLoadingAtom =
-      Atom(name: 'DecksStoreBase.isLoading', context: context);
+  late final _$isLoadingAtom = Atom(
+    name: 'DecksStoreBase.isLoading',
+    context: context,
+  );
 
   @override
   bool get isLoading {
@@ -40,24 +42,30 @@ mixin _$DecksStore on DecksStoreBase, Store {
     });
   }
 
-  late final _$loadDecksAsyncAction =
-      AsyncAction('DecksStoreBase.loadDecks', context: context);
+  late final _$loadDecksAsyncAction = AsyncAction(
+    'DecksStoreBase.loadDecks',
+    context: context,
+  );
 
   @override
   Future<void> loadDecks() {
     return _$loadDecksAsyncAction.run(() => super.loadDecks());
   }
 
-  late final _$addDeckAsyncAction =
-      AsyncAction('DecksStoreBase.addDeck', context: context);
+  late final _$addDeckAsyncAction = AsyncAction(
+    'DecksStoreBase.addDeck',
+    context: context,
+  );
 
   @override
   Future<void> addDeck(String deckTitle) {
     return _$addDeckAsyncAction.run(() => super.addDeck(deckTitle));
   }
 
-  late final _$removeDeckAsyncAction =
-      AsyncAction('DecksStoreBase.removeDeck', context: context);
+  late final _$removeDeckAsyncAction = AsyncAction(
+    'DecksStoreBase.removeDeck',
+    context: context,
+  );
 
   @override
   Future<void> removeDeck(int deckId) {
