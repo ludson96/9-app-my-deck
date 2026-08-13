@@ -132,11 +132,20 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> createAccount() async {
-    final email = emailController.text;
+    final email = emailController.text.trim();
     final pass = passwordController.text;
     final confirmPass = confirmPasswordController.text;
 
-    if (email.isEmpty || pass.isEmpty || confirmPass.isEmpty) return;
+    if (email.isEmpty || pass.isEmpty || confirmPass.isEmpty) {
+      ErrorModal.show(context, 'Preencha todos os campos');
+      return;
+    }
+
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    if (!emailRegex.hasMatch(email)) {
+      ErrorModal.show(context, 'Por favor, insira um e-mail válido');
+      return;
+    }
 
     if (pass != confirmPass) {
       ErrorModal.show(context, 'Senha e Confirmar Senha são diferentes');

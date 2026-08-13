@@ -51,7 +51,7 @@ class _ManageCardsPageState extends State<ManageCardsPage> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
-          title: Text("Gerenciar Cards - ${widget.deck.name}"),
+          title: const Text("Gerenciar Cards"),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
