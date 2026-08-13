@@ -8,24 +8,17 @@ import '../decks.store.dart';
 class DeckList extends StatefulWidget {
   final DecksStore _store;
 
-  const DeckList({
-    super.key,
-    required DecksStore store,
-  }) : _store = store;
+  const DeckList({super.key, required DecksStore store}) : _store = store;
 
   @override
   State<DeckList> createState() => _DeckListState();
 }
 
 class _DeckListState extends State<DeckList> {
-  Future<void> _navigateToDeckDetail({
-    required Deck deck,
-  }) async {
-    await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => DeckDetailPage(deck: deck),
-      ),
-    );
+  Future<void> _navigateToDeckDetail({required Deck deck}) async {
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => DeckDetailPage(deck: deck)));
 
     await widget._store.loadDecks();
 
@@ -43,16 +36,12 @@ class _DeckListState extends State<DeckList> {
       itemBuilder: (_, index) {
         final deck = widget._store.decks[index];
         return InkWell(
-          onTap: () => _navigateToDeckDetail(
-            deck: deck,
-          ),
+          onTap: () => _navigateToDeckDetail(deck: deck),
           onLongPress: () => removeDeck(deck),
           child: Container(
             height: 150,
             decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(),
-              ),
+              border: Border(bottom: BorderSide()),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,9 +53,7 @@ class _DeckListState extends State<DeckList> {
                     fontSize: 24,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Text(
                   "${deck.questions.length} ${deck.questions.length == 1 ? 'cartão' : 'cartões'}",
                 ),
@@ -79,6 +66,30 @@ class _DeckListState extends State<DeckList> {
   }
 
   Future<void> removeDeck(Deck deck) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Excluir Deck"),
+        content: Text("Deseja realmente excluir o deck \"${deck.name}\"?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: const Text("Cancelar", style: TextStyle(color: Colors.grey)),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: const Text("Excluir"),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm != true) return;
+
     await widget._store.removeDeck(deck.id);
 
     if (!mounted) return;
