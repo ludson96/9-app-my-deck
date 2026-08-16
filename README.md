@@ -1,5 +1,7 @@
 # My Deck App
 
+🌍 Read this in [English](README.en.md)
+
 > Um aplicativo prático e intuitivo para criação, gerenciamento e revisão de estudos utilizando flashcards.
 
 ## 📝 Sobre o Projeto
